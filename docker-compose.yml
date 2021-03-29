@@ -1,0 +1,17 @@
+version: '3'
+services:
+  postgres:
+    image: "postgres:11.11"
+    container_name: "canal-imdb"
+    environment:
+      - POSTGRES_USER=canal
+      - POSTGRES_PASSWORD=canal
+      - POSTGRES_DB=canal
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./src/db/init:/docker-entrypoint-initdb.d
+      - canal-imdb-data:/var/lib/postgresql/data
+
+volumes:
+  canal-imdb-data:
