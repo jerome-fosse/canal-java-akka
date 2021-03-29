@@ -38,7 +38,7 @@ public class HttpRoutesTest extends JUnitRouteTest {
     //@Test
     @Ignore("java.lang.NullPointerException: Cannot invoke \"akka.actor.ClassicActorSystemProvider.classicSystem()\" because \"system\" is null")
     public void when_a_movie_exist_it_should_return_the_list_of_the_principals_and_status_code_is_OK() {
-        routes.run(POST("/movies/principals/search").withEntity("{movieTitle:\"The Last of the Mohicans\"}"))
+        routes.run(POST("/titles/principals/search").withEntity("{titleName:\"The Last of the Mohicans\"}"))
             .assertStatusCode(StatusCodes.OK)
         ;
     }
@@ -46,7 +46,7 @@ public class HttpRoutesTest extends JUnitRouteTest {
     //@Test
     @Ignore("java.lang.NullPointerException: Cannot invoke \"akka.actor.ClassicActorSystemProvider.classicSystem()\" because \"system\" is null")
     public void when_a_movie_does_not_exist_status_code_should_be_NOT_FOUND() {
-        routes.run(POST("/movies/principals/search").withEntity("{movieTitle:\"The Matrix\"}"))
+        routes.run(POST("/titles/principals/search").withEntity("{titleName:\"The Matrix\"}"))
             .assertStatusCode(StatusCodes.NOT_FOUND);
     }
 
